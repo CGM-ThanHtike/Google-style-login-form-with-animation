@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <form action="none" class="form">
+        <h1>Sign in</h1>
+        <div class=" form-group">
+          <input pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" class="form-input" type="email" id="email" placeholder=" ">
+          <label for="email" class="form-label">Email</label>
+        </div>
+        <div class="form-group">
+          <input  title="Must be at least 8 characters" pattern="[a-zA-Z0-9]{8,}" required class="form-input" type="password" id="password" placeholder=" ">
+          <label for="password" class="form-label">Password</label>
+        </div>
+        <a href="#" class="forgot">Forgot password?</a>
+        <button type="submit" value="Submit" class="pushable">
+          <span class="shadow"></span>
+          <span class="edge"></span>
+          <span class="front">
+            Sign in
+          </span>
+        </button>
+        <span class="double-lines">or</span>
+        <p class="no-acc">Don't have an account?</p>
+        <a href="#" class="btn btn-secondary">Sign up</a>
+      </form>
+    </div>
+  </main>
+</body>
+
+<script>
+  function preventSubmit(event) {
+      event.preventDefault();
+  }
+</script>
+</html>

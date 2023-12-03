@@ -1,0 +1,329 @@
+:root {
+  --shadow-color: 0deg 0% 60%;
+  --shadow-elevation-low:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+    0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.34),
+    1px 2px 2.5px -2.5px hsl(var(--shadow-color) / 0.34);
+  --shadow-elevation-medium:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+    0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+    2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+    5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+
+  --clr-accent-300: hsl(214deg 82% 71%);
+  --clr-accent-400: hsl(214deg 82% 51%);
+  --clr-accent-800: hsl(214deg 82% 31%);
+
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-200: hsl(0, 0%, 96%);
+  --clr-neutral-300: hsl(43, 54%, 95%);
+  --clr-neutral-400: hsl(0, 0%, 75%);
+  --clr-neutral-600: hsl(0, 0%, 45%);
+  --clr-neutral-500: hsl(0, 0%, 30%);
+  --clr-neutral-700: hsl(0, 0%, 20%);
+  --clr-neutral-800: hsl(0, 0%, 10%);
+  --clr-neutral-900: hsl(0, 0%, 0%);
+
+  --clr-valid: hsl(130 52% 46%);
+  --clr-focus: hsl(44 83% 53%);
+  --clr-invalid: hsl(18 100% 50%);
+  --clr-blur: var(--clr-neutral-400);
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--clr-neutral-200);
+  color: var(--clr-neutral-800);
+  font-family: system-ui, sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  width: 620px;
+  max-width: 100%;
+}
+
+.container {
+  padding-inline: 2rem;
+}
+
+.form {
+  display: grid;
+  padding: clamp(1.5rem, 3vw, 4rem);
+  border-radius: 4px;
+  box-shadow: var(--shadow-elevation-medium);
+  background-color: var(--clr-neutral-100);
+  gap: 1.75rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-label {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  color: var(--clr-neutral-500);
+  transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-input {
+  padding: 15px 15px;
+  width: 100%;
+}
+
+.form input,
+.form textarea {
+  border: none;
+  border-radius: 10px;
+  outline: 3px solid var(--color, var(--clr-blur));
+}
+
+.form input:focus,
+.form textarea:focus {
+  /* outline: 2px solid var(--clr-accent-400); */
+}
+
+.form-group:focus-within .form-label,
+.form-group:not(:focus-within) .form-input:not(:placeholder-shown)+.form-label {
+  display: block;
+  top: -12px;
+  left: 8px;
+  padding: 0 8px;
+  background: var(--clr-neutral-100);
+  font-size: 12px;
+  transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-input:focus+.form-label {
+  display: block;
+  top: -12px;
+  left: 8px;
+  padding: 0 8px;
+  background: var(--clr-neutral-100);
+  font-size: 12px;
+  transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form .btn {
+  padding: 0.6em 1.5em;
+  border-radius: 100vw;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: 300ms ease-out;
+}
+
+.btn.btn-secondary {
+  border: 1px solid var(--clr-neutral-500);
+  background: transparent;
+  color: inherit;
+}
+
+.btn.btn-secondary:hover,
+.btn.btn-secondary:focus {
+  border-color: transparent;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--clr-accent-800);
+  color: #fff;
+}
+
+.btn:active,
+.btn:focus {
+  outline: none !important;
+}
+
+.btn:active {
+  transform: scale(0.97);
+  transition: transform 0.35s cubic-bezier(.14, 0, .29, .99);
+}
+
+/* pushable button styles */
+.pushable {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+}
+
+.front {
+  display: block;
+  position: relative;
+  padding: 0.6em 1.5em;
+  border-radius: 100vw;
+  transform: translateY(-4px);
+  background: var(--clr-neutral-400);
+  color: white;
+  font-size: 1.25rem;
+  will-change: transform;
+  transition:
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+form:valid .front {
+  background: hsl(200deg 100% 47%);
+  color: var(--clr-neutral-100);
+}
+
+form:valid .edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100vw;
+  background: linear-gradient(to left,
+      hsl(205deg 100% 16%) 0%,
+      hsl(205deg 100% 32%) 8%,
+      hsl(205deg 100% 32%) 92%,
+      hsl(205deg 100% 16%) 100%);
+}
+
+form:valid .shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100vw;
+  transform: translateY(2px);
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transition:
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+form:valid .pushable:hover {
+  filter: brightness(110%);
+}
+
+form:valid .pushable:hover .front {
+  transform: translateY(-6px);
+  transition:
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+form:valid .pushable:active .front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+form:valid .pushable:hover .shadow {
+  transform: translateY(4px);
+  transition:
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+form:valid .pushable:active .shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+form:valid .pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.forgot {
+  color: var(--clr-accent-400);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.forgot:hover {
+  color: var(--clr-accent-800);
+}
+
+.double-lines {
+  position: relative;
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.double-lines::before,
+.double-lines::after {
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: var(--clr-neutral-400);
+  content: '';
+}
+
+.double-lines::before {
+  left: 0;
+}
+
+.double-lines::after {
+  right: 0;
+}
+
+.no-acc {
+  font-weight: 700;
+  text-align: center;
+}
+
+/* validation animation */
+.form-group:has(:invalid) {
+  --color: var(--clr-invalid);
+}
+
+.form-group:has(:focus) {
+  --color: var(--clr-focus);
+}
+
+.form-group:has(:valid) {
+  --color: var(--clr-valid);
+}
+
+.form-group:has(:invalid:not(:focus)) {
+  animation: shake 0.65s;
+}
+
+.form-group:has(:placeholder-shown) {
+  --color: var(--clr-blur);
+}
+
+.form-group:has(:placeholder-shown:not(:focus)) {
+  animation: none;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(-2%);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(2%);
+  }
+}
