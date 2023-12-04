@@ -157,9 +157,13 @@ main {
   background: transparent;
   font-size: 1.5rem;
   font-weight: 700;
-  cursor: pointer;
+  cursor: not-allowed;
   outline-offset: 4px;
   transition: filter 250ms;
+}
+
+form:valid .pushable {
+  cursor: pointer;
 }
 
 .front {
@@ -177,7 +181,7 @@ main {
 }
 
 form:valid .front {
-  background: hsl(200deg 100% 47%);
+  background: var(--clr-accent-400);
   color: var(--clr-neutral-100);
 }
 
@@ -327,3 +331,5 @@ form:valid .pushable:focus:not(:focus-visible) {
     transform: translateX(2%);
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {}
