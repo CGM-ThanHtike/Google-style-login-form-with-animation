@@ -18,10 +18,12 @@
         <div class=" form-group">
           <input pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" class="form-input" type="email" id="email" placeholder=" ">
           <label for="email" class="form-label">Email</label>
+          <div class="form-group-error">Enter a valid email address</div>
         </div>
         <div class="form-group">
           <input  title="Must be at least 8 characters" pattern="[a-zA-Z0-9]{8,}" required class="form-input" type="password" id="password" placeholder=" ">
           <label for="password" class="form-label">Password</label>
+          <div class="form-group-error">Password must be at least 8 characters</div>
         </div>
         <a href="#" class="forgot">Forgot password?</a>
         <button type="submit" value="Submit" class="pushable">
